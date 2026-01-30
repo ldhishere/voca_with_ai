@@ -41,10 +41,10 @@ const WordList: React.FC<WordListProps> = ({
 						</svg>
 					)}
 				</div>
-				<h3 className="text-xl font-black text-slate-900 tracking-tight">
+				<h3 className="text-xl font-black text-slate-900 tracking-tight text-center">
 					{isFilteringFavorites ? '즐겨찾기한 단어가 없습니다.' : '단어장이 비어있습니다.'}
 				</h3>
-				<p className="mt-2 text-slate-500 font-medium max-w-xs mx-auto">
+				<p className="mt-2 text-slate-500 font-medium max-w-xs mx-auto text-center">
 					{isFilteringFavorites
 						? '중요한 단어에 별표를 표시하여 모아보세요.'
 						: 'AI 검색을 이용하거나 대량 등록을 통해 단어를 추가해보세요.'}
@@ -55,8 +55,8 @@ const WordList: React.FC<WordListProps> = ({
 
 	return (
 		<div className="bg-white rounded-[2rem] border border-slate-200 shadow-sm overflow-hidden">
-			{/* Table Header - Desktop Only (>430px) */}
-			<div className="hidden min-[431px]:grid grid-cols-[56px_1.2fr_1.2fr_3fr_56px] bg-slate-50/50 border-b border-slate-100 items-center">
+			{/* Table Header - Desktop Only (>=768px) */}
+			<div className="hidden min-[769px]:grid grid-cols-[56px_1.2fr_1.2fr_3fr_56px] bg-slate-50/50 border-b border-slate-100 items-center">
 				<div className="py-5"></div>
 				<div className="py-5 px-4 text-[10px] font-black text-slate-400 uppercase tracking-widest text-left">
 					단어

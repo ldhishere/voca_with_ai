@@ -36,26 +36,26 @@ const WordItem: React.FC<WordItemProps> = ({ word, visibility, onToggleFavorite,
 		const bracketIndex = text.indexOf('[');
 		if (bracketIndex !== -1) {
 			const main = text.substring(0, bracketIndex).trim();
-			const sub = text.substring(bracketIndex);
+			const sub = text.substring(bracketIndex).toLowerCase();
 			return (
 				<span className="inline-flex items-baseline flex-wrap">
-					<span className="font-bold min-[431px]:font-black">{main}</span>
+					<span className="font-bold min-[769px]:font-black">{main}</span>
 					<span className="text-[0.65rem] font-medium text-slate-400 ml-1.5 tracking-tight uppercase">
 						{sub}
 					</span>
 				</span>
 			);
 		}
-		return <span className="font-bold min-[431px]:font-black">{text}</span>;
+		return <span className="font-bold min-[769px]:font-black">{text}</span>;
 	};
 
 	return (
 		<div className="group hover:bg-indigo-50/30 transition-all border-l-4 border-l-transparent hover:border-l-indigo-500">
-			<div className="flex flex-col min-[431px]:grid min-[431px]:grid-cols-[56px_1.2fr_1.2fr_3fr_56px] items-stretch min-[431px]:items-center">
+			<div className="flex flex-col min-[769px]:grid min-[769px]:grid-cols-[56px_1.2fr_1.2fr_3fr_56px] items-stretch min-[769px]:items-center">
 				{/* Row 1 (Mobile): Main Info Area - Includes Star, Word, Meaning, Delete */}
-				<div className="flex items-center min-[431px]:contents p-3 min-[431px]:p-0">
+				<div className="flex items-center min-[769px]:contents p-3 min-[769px]:p-0">
 					{/* Favorite Button Cell */}
-					<div className="flex-shrink-0 w-10 min-[431px]:w-auto flex justify-center min-[431px]:px-2">
+					<div className="flex-shrink-0 w-10 min-[769px]:w-auto flex justify-center min-[769px]:px-2">
 						<button
 							onClick={() => onToggleFavorite(word.id)}
 							className={`transition-all transform active:scale-150 p-1 rounded-full ${
@@ -64,7 +64,7 @@ const WordItem: React.FC<WordItemProps> = ({ word, visibility, onToggleFavorite,
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								className="h-5 w-5 min-[431px]:h-6 min-[431px]:w-6"
+								className="h-5 w-5 min-[769px]:h-6 min-[769px]:w-6"
 								fill={word.isFavorite ? 'currentColor' : 'none'}
 								viewBox="0 0 24 24"
 								stroke="currentColor"
@@ -80,12 +80,12 @@ const WordItem: React.FC<WordItemProps> = ({ word, visibility, onToggleFavorite,
 					</div>
 
 					{/* Word + Meaning (Combined Flex Row for Mobile) */}
-					<div className="flex-1 flex flex-row items-center min-[431px]:contents overflow-hidden px-1">
+					<div className="flex-1 flex flex-row items-center min-[769px]:contents overflow-hidden px-1">
 						{/* Word Cell */}
-						<div className="min-[431px]:px-4 min-[431px]:py-5 min-w-0">
+						<div className="min-[769px]:px-4 min-[769px]:py-5 min-w-0">
 							<div className="flex items-center space-x-1.5">
 								<div
-									className={`text-base min-[431px]:text-lg tracking-tight leading-none whitespace-nowrap truncate ${
+									className={`text-base min-[769px]:text-lg tracking-tight leading-none whitespace-nowrap truncate ${
 										visibility.word
 											? 'text-slate-900'
 											: 'text-transparent bg-slate-200 rounded animate-pulse w-16 select-none'
@@ -123,21 +123,21 @@ const WordItem: React.FC<WordItemProps> = ({ word, visibility, onToggleFavorite,
 						</div>
 
 						{/* Meaning Cell (Adjacent to Word on Mobile) */}
-						<div className="min-[431px]:px-4 min-[431px]:py-5 flex-shrink-0 min-[431px]:flex-1 ml-2 min-[431px]:ml-0">
+						<div className="min-[769px]:px-4 min-[769px]:py-5 flex-shrink-0 min-[769px]:flex-1 ml-2 min-[769px]:ml-0">
 							<span
-								className={`text-sm min-[431px]:text-base font-medium min-[431px]:font-semibold break-all ${
+								className={`text-sm min-[769px]:text-base font-medium min-[769px]:font-semibold break-all ${
 									visibility.meaning
-										? 'text-indigo-600 min-[431px]:text-slate-700'
+										? 'text-indigo-600 min-[769px]:text-slate-700'
 										: 'text-transparent bg-slate-200 rounded animate-pulse w-20 select-none'
 								}`}
 							>
-								{visibility.meaning ? `: ${word.meaning}` : '••••'}
+								{visibility.meaning ? ` ${word.meaning}` : '••••'}
 							</span>
 						</div>
 					</div>
 
 					{/* Delete Button (Mobile View - end of first row) */}
-					<div className="flex-shrink-0 min-[431px]:hidden px-1">
+					<div className="flex-shrink-0 min-[769px]:hidden px-1">
 						<button
 							onClick={() => onDelete(word.id)}
 							className="p-1.5 text-slate-300 hover:text-red-500"
@@ -160,11 +160,11 @@ const WordItem: React.FC<WordItemProps> = ({ word, visibility, onToggleFavorite,
 					</div>
 				</div>
 
-				{/* Row 2 (Mobile): Example Sentence - Full Width below Word+Meaning */}
-				<div className="px-12 min-[431px]:px-4 pb-3 min-[431px]:pb-0 min-[431px]:py-5">
-					<div className="flex items-start space-x-1.5 bg-slate-50 min-[431px]:bg-transparent p-2 min-[431px]:p-0 rounded-xl min-[431px]:rounded-none">
+				{/* Row 2 (Mobile  < 769px): Example Sentence - Full Width below Word+Meaning */}
+				<div className="px-12 min-[769px]:px-4 pb-3 min-[769px]:pb-0 min-[769px]:py-5">
+					<div className="flex items-start space-x-1.5 bg-slate-50 min-[769px]:bg-transparent p-2 min-[769px]:p-0 rounded-xl min-[769px]:rounded-none">
 						<span
-							className={`text-xs min-[431px]:text-sm leading-relaxed italic flex-1 ${
+							className={`text-xs min-[769px]:text-sm leading-relaxed italic flex-1 ${
 								visibility.example
 									? 'text-slate-500'
 									: 'text-transparent bg-slate-100 rounded animate-pulse w-full select-none'
@@ -201,8 +201,8 @@ const WordItem: React.FC<WordItemProps> = ({ word, visibility, onToggleFavorite,
 					</div>
 				</div>
 
-				{/* Action Button (Desktop Only) */}
-				<div className="hidden min-[431px]:flex justify-center py-5">
+				{/* Action Button (Desktop >= 769px) */}
+				<div className="hidden min-[769px]:flex justify-center py-5">
 					<button
 						onClick={() => onDelete(word.id)}
 						className="opacity-0 group-hover:opacity-100 p-2 text-slate-400 hover:text-red-500 transition-all rounded-lg hover:bg-red-50"
