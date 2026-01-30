@@ -38,34 +38,33 @@ const WordItem: React.FC<WordItemProps> = ({ word, visibility, onToggleFavorite,
 			const main = text.substring(0, bracketIndex).trim();
 			const sub = text.substring(bracketIndex);
 			return (
-				<div className="flex flex-col min-[431px]:flex-row min-[431px]:items-baseline">
-					<span className="break-all">{main}</span>
-					<span className="text-[0.7rem] font-medium text-slate-400 min-[431px]:ml-2 tracking-normal leading-tight">
+				<span className="inline-flex items-baseline flex-wrap">
+					<span className="font-bold min-[431px]:font-black">{main}</span>
+					<span className="text-[0.65rem] font-medium text-slate-400 ml-1.5 tracking-tight uppercase">
 						{sub}
 					</span>
-				</div>
+				</span>
 			);
 		}
-		return <span className="break-all">{text}</span>;
+		return <span className="font-bold min-[431px]:font-black">{text}</span>;
 	};
 
 	return (
-		<div className="group hover:bg-indigo-50/30 transition-all">
-			<div className="flex flex-col min-[431px]:grid min-[431px]:grid-cols-[64px_1.5fr_1.5fr_3fr_64px] items-stretch min-[431px]:items-center">
-				{/* Row 1: Word, Meaning and Actions (Top row on Mobile) */}
-				<div className="flex items-center min-[431px]:contents p-4 min-[431px]:p-0">
-					{/* Favorite Button */}
-					<div className="flex-shrink-0 w-12 min-[431px]:w-auto flex justify-center min-[431px]:px-4">
+		<div className="group hover:bg-indigo-50/30 transition-all border-l-4 border-l-transparent hover:border-l-indigo-500">
+			<div className="flex flex-col min-[431px]:grid min-[431px]:grid-cols-[56px_1.2fr_1.2fr_3fr_56px] items-stretch min-[431px]:items-center">
+				{/* Row 1 (Mobile): Main Info Area - Includes Star, Word, Meaning, Delete */}
+				<div className="flex items-center min-[431px]:contents p-3 min-[431px]:p-0">
+					{/* Favorite Button Cell */}
+					<div className="flex-shrink-0 w-10 min-[431px]:w-auto flex justify-center min-[431px]:px-2">
 						<button
 							onClick={() => onToggleFavorite(word.id)}
-							className={`transition-all transform active:scale-150 p-1.5 rounded-full hover:bg-slate-100 ${
+							className={`transition-all transform active:scale-150 p-1 rounded-full ${
 								word.isFavorite ? 'text-amber-500' : 'text-slate-300 hover:text-slate-400'
 							}`}
-							title={word.isFavorite ? '즐겨찾기 해제' : '즐겨찾기 추가'}
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								className="h-6 w-6 drop-shadow-sm"
+								className="h-5 w-5 min-[431px]:h-6 min-[431px]:w-6"
 								fill={word.isFavorite ? 'currentColor' : 'none'}
 								viewBox="0 0 24 24"
 								stroke="currentColor"
@@ -80,16 +79,16 @@ const WordItem: React.FC<WordItemProps> = ({ word, visibility, onToggleFavorite,
 						</button>
 					</div>
 
-					{/* Word & Meaning Layout on Mobile */}
-					<div className="flex-1 flex flex-col min-[431px]:contents min-w-0">
+					{/* Word + Meaning (Combined Flex Row for Mobile) */}
+					<div className="flex-1 flex flex-row items-center min-[431px]:contents overflow-hidden px-1">
 						{/* Word Cell */}
-						<div className="min-[431px]:px-6 min-[431px]:py-4 min-w-0">
-							<div className="flex items-center space-x-2">
+						<div className="min-[431px]:px-4 min-[431px]:py-5 min-w-0">
+							<div className="flex items-center space-x-1.5">
 								<div
-									className={`text-lg min-[431px]:text-xl font-bold min-[431px]:font-black tracking-tight leading-tight ${
+									className={`text-base min-[431px]:text-lg tracking-tight leading-none whitespace-nowrap truncate ${
 										visibility.word
 											? 'text-slate-900'
-											: 'text-transparent bg-slate-200 rounded animate-pulse w-24 select-none'
+											: 'text-transparent bg-slate-200 rounded animate-pulse w-16 select-none'
 									}`}
 								>
 									{visibility.word ? renderFormattedWord(word.word) : '••••'}
@@ -98,15 +97,15 @@ const WordItem: React.FC<WordItemProps> = ({ word, visibility, onToggleFavorite,
 									<button
 										onClick={() => handlePlayTTS(word.word)}
 										disabled={isPlaying}
-										className={`p-1.5 transition-colors rounded-full hover:bg-white shadow-sm flex-shrink-0 ${
+										className={`p-1 flex-shrink-0 ${
 											isPlaying
 												? 'text-indigo-600 animate-pulse'
-												: 'text-slate-400 hover:text-indigo-600'
+												: 'text-slate-300 hover:text-indigo-600'
 										}`}
 									>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
-											className="h-4 w-4"
+											className="h-3.5 w-3.5"
 											fill="none"
 											viewBox="0 0 24 24"
 											stroke="currentColor"
@@ -123,29 +122,29 @@ const WordItem: React.FC<WordItemProps> = ({ word, visibility, onToggleFavorite,
 							</div>
 						</div>
 
-						{/* Meaning Cell */}
-						<div className="min-[431px]:px-6 min-[431px]:py-4">
+						{/* Meaning Cell (Adjacent to Word on Mobile) */}
+						<div className="min-[431px]:px-4 min-[431px]:py-5 flex-shrink-0 min-[431px]:flex-1 ml-2 min-[431px]:ml-0">
 							<span
-								className={`text-sm min-[431px]:text-base font-bold break-all block ${
+								className={`text-sm min-[431px]:text-base font-medium min-[431px]:font-semibold break-all ${
 									visibility.meaning
-										? 'text-slate-600 min-[431px]:text-slate-700'
-										: 'text-transparent bg-slate-200 rounded animate-pulse w-32 select-none'
+										? 'text-indigo-600 min-[431px]:text-slate-700'
+										: 'text-transparent bg-slate-200 rounded animate-pulse w-20 select-none'
 								}`}
 							>
-								{word.meaning}
+								{visibility.meaning ? `: ${word.meaning}` : '••••'}
 							</span>
 						</div>
 					</div>
 
-					{/* Delete Button (Mobile View) */}
-					<div className="flex-shrink-0 min-[431px]:hidden px-2">
+					{/* Delete Button (Mobile View - end of first row) */}
+					<div className="flex-shrink-0 min-[431px]:hidden px-1">
 						<button
 							onClick={() => onDelete(word.id)}
-							className="p-2 text-slate-300 hover:text-red-500 transition-all rounded-lg"
+							className="p-1.5 text-slate-300 hover:text-red-500"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								className="h-5 w-5"
+								className="h-4 w-4"
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke="currentColor"
@@ -161,13 +160,13 @@ const WordItem: React.FC<WordItemProps> = ({ word, visibility, onToggleFavorite,
 					</div>
 				</div>
 
-				{/* Row 2: Example Sentence (Below Row 1 on Mobile) */}
-				<div className="px-16 min-[431px]:px-6 pb-4 min-[431px]:pb-0 min-[431px]:py-4">
-					<div className="flex items-start space-x-2 bg-slate-50 min-[431px]:bg-transparent p-3 min-[431px]:p-0 rounded-2xl min-[431px]:rounded-none">
+				{/* Row 2 (Mobile): Example Sentence - Full Width below Word+Meaning */}
+				<div className="px-12 min-[431px]:px-4 pb-3 min-[431px]:pb-0 min-[431px]:py-5">
+					<div className="flex items-start space-x-1.5 bg-slate-50 min-[431px]:bg-transparent p-2 min-[431px]:p-0 rounded-xl min-[431px]:rounded-none">
 						<span
-							className={`text-xs min-[431px]:text-sm leading-relaxed break-words whitespace-normal flex-1 ${
+							className={`text-xs min-[431px]:text-sm leading-relaxed italic flex-1 ${
 								visibility.example
-									? 'text-slate-500 italic'
+									? 'text-slate-500'
 									: 'text-transparent bg-slate-100 rounded animate-pulse w-full select-none'
 							}`}
 						>
@@ -177,15 +176,15 @@ const WordItem: React.FC<WordItemProps> = ({ word, visibility, onToggleFavorite,
 							<button
 								onClick={() => handlePlayTTS(word.example)}
 								disabled={isPlaying}
-								className={`mt-0.5 p-1.5 transition-colors rounded-full hover:bg-white min-[431px]:hover:bg-indigo-50 shadow-sm flex-shrink-0 ${
+								className={`p-1 flex-shrink-0 ${
 									isPlaying
 										? 'text-indigo-600 animate-pulse'
-										: 'text-slate-400 hover:text-indigo-600'
+										: 'text-slate-300 hover:text-indigo-600'
 								}`}
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
-									className="h-3.5 w-3.5"
+									className="h-3 w-3"
 									fill="none"
 									viewBox="0 0 24 24"
 									stroke="currentColor"
@@ -203,7 +202,7 @@ const WordItem: React.FC<WordItemProps> = ({ word, visibility, onToggleFavorite,
 				</div>
 
 				{/* Action Button (Desktop Only) */}
-				<div className="hidden min-[431px]:flex justify-center py-4">
+				<div className="hidden min-[431px]:flex justify-center py-5">
 					<button
 						onClick={() => onDelete(word.id)}
 						className="opacity-0 group-hover:opacity-100 p-2 text-slate-400 hover:text-red-500 transition-all rounded-lg hover:bg-red-50"
