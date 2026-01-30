@@ -33,7 +33,7 @@ export async function generate100Words(
     For each word, provide:
     1. "word": The word in ${targetLang}. 
        - For logographic or non-Latin scripts (Chinese, Japanese, Hindi, Arabic, Russian, Bengali), include the Romanized pronunciation (Pinyin, Romaji, etc.) in brackets using only Latin alphabet/English letters.
-       - IMPORTANT: NEVER use Korean characters (Hangul) for pronunciation.
+       - IMPORTANT: NEVER use Korean characters (Hangul) for pronunciation. Always use lowercase for the Romanization inside brackets.
     2. "meaning": The primary meaning in Korean.
     3. "example": A simple, natural example sentence in ${targetLang}.
     
@@ -77,7 +77,7 @@ export async function lookupWord(
 		model: 'gemini-3-flash-preview',
 		contents: `Give me the primary Korean meaning and one natural ${targetLangName} example sentence for the word: "${word}". 
     The example sentence MUST be in ${targetLangName}. 
-    If you provide pronunciation for the word, use only the Latin alphabet (Romanization). 
+    If you provide pronunciation for the word, the lowercase Latin alphabet (Romanization) in brackets. 
     NEVER use Korean characters for pronunciation.
     Format your response as JSON with "meaning" and "example" keys.`,
 		config: {
