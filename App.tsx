@@ -86,11 +86,12 @@ const App: React.FC = () => {
 	);
 
 	const filteredWords = useMemo(() => {
-		if (!activeList) return [];
+		const list = activeList;
+		if (!list) return [];
 		if (showFavoritesOnly) {
-			return activeList.words.filter((w) => w.isFavorite);
+			return list.words.filter((w) => w.isFavorite);
 		}
-		return activeList.words;
+		return list.words;
 	}, [activeList, showFavoritesOnly]);
 
 	const handleStartCreate = () => {
@@ -225,6 +226,9 @@ const App: React.FC = () => {
 		}));
 		updateActiveListWords((words) => [...newEntries, ...words]);
 	};
+
+	// currentList 상수를 통해 TypeScript에게 null 체크가 끝났음을 알림
+	const currentList = activeList;
 
 	return (
 		<div className="min-h-screen bg-slate-50 flex flex-col md:flex-row relative">
@@ -537,7 +541,7 @@ const App: React.FC = () => {
 				<Header />
 
 				<main className="max-w-6xl w-full mx-auto px-4 py-10">
-					{!activeList ? (
+					{!currentList ? (
 						<div className="text-center py-32 animate-in fade-in zoom-in duration-500">
 							<div className="mx-auto w-24 h-24 bg-indigo-50 text-indigo-400 rounded-[2rem] flex items-center justify-center mb-8 shadow-sm border border-indigo-100/50">
 								<svg
@@ -574,10 +578,10 @@ const App: React.FC = () => {
 								<div className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-8">
 									<div className="flex items-center space-x-4">
 										<span className="text-5xl drop-shadow-lg">
-											{LANGUAGES.find((l) => l.id === activeList?.language)?.flag || '📚'}
+											{LANGUAGES.find((l) => l.id === currentList.language)?.flag || '📚'}
 										</span>
 										<h2 className="text-4xl font-black text-slate-900 tracking-tighter">
-											{activeList?.name}
+											{currentList.name}
 										</h2>
 									</div>
 									<div className="flex space-x-1.5 bg-white p-1.5 rounded-2xl shadow-sm border border-slate-200">
@@ -684,7 +688,7 @@ const App: React.FC = () => {
 							)}
 
 							{activeTab === 'search' && (
-								<SearchLookup onAddWord={addWord} language={activeList?.language || 'en'} />
+								<SearchLookup onAddWord={addWord} language={currentList.language} />
 							)}
 						</div>
 					)}
