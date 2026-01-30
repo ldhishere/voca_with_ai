@@ -563,7 +563,7 @@ const App: React.FC = () => {
 								글로벌 학습을 시작하세요
 							</h2>
 							<p className="text-slate-500 mt-3 max-w-sm mx-auto font-medium leading-relaxed text-lg">
-								핵심 공용어 단어장으로 시작하거나 나만의 리스트를 만드세요.
+								핵심 필수 단어장으로 시작하거나 나만의 리스트를 만드세요.
 							</p>
 							<button
 								onClick={handleStartCreate}
@@ -577,9 +577,6 @@ const App: React.FC = () => {
 							<div className="flex flex-wrap items-center justify-between mb-10 gap-6">
 								<div className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-8">
 									<div className="flex items-center space-x-4">
-										<span className="text-5xl drop-shadow-lg">
-											{LANGUAGES.find((l) => l.id === currentList.language)?.flag || '📚'}
-										</span>
 										<h2 className="text-2xl min-[431px]:text-4xl font-black text-slate-900 tracking-tighter">
 											{currentList.name}
 										</h2>
