@@ -1,0 +1,5 @@
+{
+  "name": "AI와 함께하는 단어장",
+  "description": "A smart vocabulary app featuring bulk import, visibility toggles, and Gemini-powered features like search-grounded lookups and text-to-speech.",
+  "requestFramePermissions": []
+}
