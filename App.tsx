@@ -580,7 +580,7 @@ const App: React.FC = () => {
 										<span className="text-5xl drop-shadow-lg">
 											{LANGUAGES.find((l) => l.id === currentList.language)?.flag || '📚'}
 										</span>
-										<h2 className="text-4xl font-black text-slate-900 tracking-tighter">
+										<h2 className="text-2xl min-[431px]:text-4xl font-black text-slate-900 tracking-tighter">
 											{currentList.name}
 										</h2>
 									</div>
@@ -603,7 +603,7 @@ const App: React.FC = () => {
 													: 'hover:bg-slate-50 text-slate-400'
 											}`}
 										>
-											AI 검색 추가
+											AI 단어 검색
 										</button>
 									</div>
 								</div>
