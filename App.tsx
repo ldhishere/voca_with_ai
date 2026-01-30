@@ -231,7 +231,7 @@ const App: React.FC = () => {
 	const currentList = activeList;
 
 	return (
-		<div className="min-h-screen bg-slate-50 flex flex-col md:flex-row relative">
+		<div className="min-h-screen bg-slate-50 flex flex-col lg:flex-row relative">
 			<style>{`
         @keyframes shake {
           0%, 100% { transform: translateX(0); }
@@ -428,16 +428,16 @@ const App: React.FC = () => {
 				</div>
 			)}
 
-			{/* Sidebar */}
+			{/* Sidebar - 1024px+ Side, <1024px Top */}
 			<aside className="w-full md:w-72 bg-white border-r border-slate-200 flex flex-col md:h-screen sticky top-0 z-30 shadow-xl shadow-slate-200/50">
 				<div className="p-6 border-b border-slate-100 flex items-center space-x-3">
 					<div className="w-10 h-10 bg-indigo-600 rounded-2xl flex items-center justify-center text-white font-black shadow-lg shadow-indigo-200 text-xl">
-						V
+						W
 					</div>
-					<h1 className="font-extrabold text-slate-900 text-lg tracking-tight">My Vocab</h1>
+					<h1 className="font-extrabold text-slate-900 text-lg tracking-tight">Wordbooks</h1>
 				</div>
 
-				<div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-[40vh] md:max-h-none">
+				<div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-[40vh] lg:max-h-none">
 					<div className="flex items-center justify-between mb-2 px-2">
 						<span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
 							Vocabulary Lists
@@ -559,25 +559,27 @@ const App: React.FC = () => {
 									/>
 								</svg>
 							</div>
-							<h2 className="text-3xl font-black text-slate-900 tracking-tight">
+							<h2 className="text-3xl font-black text-slate-900 tracking-tight text-center">
 								글로벌 학습을 시작하세요
 							</h2>
-							<p className="text-slate-500 mt-3 max-w-sm mx-auto font-medium leading-relaxed text-lg">
+							<p className="text-slate-500 mt-3 max-w-sm mx-auto font-medium leading-relaxed text-lg text-center">
 								핵심 필수 단어장으로 시작하거나 나만의 리스트를 만드세요.
 							</p>
-							<button
-								onClick={handleStartCreate}
-								className="mt-10 px-10 py-5 bg-indigo-600 text-white rounded-[1.25rem] font-black text-lg shadow-2xl shadow-indigo-100 hover:bg-indigo-700 hover:-translate-y-1 transition-all active:translate-y-0 active:scale-95"
-							>
-								첫 단어장 만들기
-							</button>
+							<div className="flex justify-center mt-10">
+								<button
+									onClick={handleStartCreate}
+									className="px-10 py-5 bg-indigo-600 text-white rounded-[1.25rem] font-black text-lg shadow-2xl shadow-indigo-100 hover:bg-indigo-700 hover:-translate-y-1 transition-all active:translate-y-0 active:scale-95"
+								>
+									첫 단어장 만들기
+								</button>
+							</div>
 						</div>
 					) : (
 						<div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
 							<div className="flex flex-wrap items-center justify-between mb-10 gap-6">
-								<div className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-8">
+								<div className="flex flex-col min-[769px]:flex-row min-[769px]:items-center space-y-4 min-[769px]:space-y-0 min-[769px]:space-x-8">
 									<div className="flex items-center space-x-4">
-										<h2 className="text-2xl min-[431px]:text-4xl font-black text-slate-900 tracking-tighter">
+										<h2 className="text-2xl min-[769px]:text-4xl font-black text-slate-900 tracking-tighter">
 											{currentList.name}
 										</h2>
 									</div>
@@ -692,7 +694,7 @@ const App: React.FC = () => {
 				</main>
 
 				<footer className="mt-auto bg-white border-t border-slate-100 py-8 px-4 text-center text-[10px] text-slate-400 uppercase tracking-[0.4em] font-medium">
-					AI Vocabulary Master • Global Edition
+					Vocabulary with AI • Global Edition
 				</footer>
 			</div>
 		</div>
