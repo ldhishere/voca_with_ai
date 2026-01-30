@@ -51,11 +51,11 @@ const SearchLookup: React.FC<SearchLookupProps> = ({ onAddWord, language }) => {
 		const bracketIndex = text.indexOf('[');
 		if (bracketIndex !== -1) {
 			const main = text.substring(0, bracketIndex).trim();
-			const sub = text.substring(bracketIndex);
+			const sub = text.substring(bracketIndex).toLowerCase();
 			return (
 				<div className="flex flex-col">
 					<span>{main}</span>
-					<span className="text-xs min-[431px]:text-sm font-medium text-slate-400 tracking-normal mt-1">
+					<span className="text-xs min-[769px]:text-sm font-medium text-slate-400 tracking-normal mt-1">
 						{sub}
 					</span>
 				</div>
@@ -66,10 +66,10 @@ const SearchLookup: React.FC<SearchLookupProps> = ({ onAddWord, language }) => {
 
 	return (
 		<div className="max-w-2xl mx-auto space-y-6">
-			<div className="bg-white p-6 min-[431px]:p-8 rounded-2xl shadow-xl border border-slate-200">
-				<h2 className="text-xl min-[431px]:text-2xl font-bold text-slate-800 mb-6 flex items-center">
+			<div className="bg-white p-6 min-[769px]:p-8 rounded-2xl shadow-xl border border-slate-200">
+				<h2 className="text-xl min-[769px]:text-2xl font-bold text-slate-800 mb-6 flex items-center">
 					<svg
-						className="w-5 h-5 min-[431px]:w-6 min-[431px]:h-6 mr-2 text-indigo-600"
+						className="w-5 h-5 min-[769px]:w-6 min-[769px]:h-6 mr-2 text-indigo-600"
 						fill="currentColor"
 						viewBox="0 0 20 20"
 					>
@@ -88,12 +88,12 @@ const SearchLookup: React.FC<SearchLookupProps> = ({ onAddWord, language }) => {
 						value={query}
 						onChange={(e) => setQuery(e.target.value)}
 						placeholder="검색할 단어를 입력하세요"
-						className="w-full pl-5 pr-28 min-[431px]:pl-6 min-[431px]:pr-32 py-3 min-[431px]:py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all outline-none text-base min-[431px]:text-lg"
+						className="w-full pl-5 pr-28 min-[769px]:pl-6 min-[769px]:pr-32 py-3 min-[769px]:py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all outline-none text-base min-[769px]:text-lg"
 					/>
 					<button
 						type="submit"
 						disabled={loading}
-						className="absolute right-1.5 top-1.5 bottom-1.5 px-4 min-[431px]:px-6 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 disabled:bg-slate-300 transition-colors shadow-lg shadow-indigo-200 text-sm min-[431px]:text-base"
+						className="absolute right-1.5 top-1.5 bottom-1.5 px-4 min-[769px]:px-6 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 disabled:bg-slate-300 transition-colors shadow-lg shadow-indigo-200 text-sm min-[769px]:text-base"
 					>
 						{loading ? '...' : '검색'}
 					</button>
@@ -102,44 +102,44 @@ const SearchLookup: React.FC<SearchLookupProps> = ({ onAddWord, language }) => {
 
 			{loading && (
 				<div className="flex flex-col items-center justify-center py-12 space-y-4 px-4 text-center">
-					<div className="w-10 h-10 min-[431px]:w-12 min-[431px]:h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
-					<p className="text-slate-500 font-medium text-sm min-[431px]:text-base">
+					<div className="w-10 h-10 min-[769px]:w-12 min-[769px]:h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
+					<p className="text-slate-500 font-medium text-sm min-[769px]:text-base text-center">
 						실시간 검색 데이터를 분석하여 최적의 예문을 생성 중입니다...
 					</p>
 				</div>
 			)}
 
 			{result && (
-				<div className="bg-white p-6 min-[431px]:p-8 rounded-2xl shadow-xl border border-indigo-100 animate-in fade-in slide-in-from-bottom-4 duration-500">
+				<div className="bg-white p-6 min-[769px]:p-8 rounded-2xl shadow-xl border border-indigo-100 animate-in fade-in slide-in-from-bottom-4 duration-500">
 					<div className="space-y-6">
 						<div>
-							<label className="text-[10px] min-[431px]:text-xs font-bold text-indigo-600 uppercase tracking-wider">
+							<label className="text-[10px] min-[769px]:text-xs font-bold text-indigo-600 uppercase tracking-wider">
 								단어
 							</label>
-							<h3 className="text-2xl min-[431px]:text-3xl font-extrabold text-slate-900 leading-tight">
+							<h3 className="text-2xl min-[769px]:text-3xl font-extrabold text-slate-900 leading-tight">
 								{result.word ? renderFormattedWord(result.word) : ''}
 							</h3>
 						</div>
 						<div>
-							<label className="text-[10px] min-[431px]:text-xs font-bold text-indigo-600 uppercase tracking-wider">
+							<label className="text-[10px] min-[769px]:text-xs font-bold text-indigo-600 uppercase tracking-wider">
 								뜻
 							</label>
-							<p className="text-lg min-[431px]:text-xl text-slate-700 font-medium leading-relaxed">
+							<p className="text-lg min-[769px]:text-xl text-slate-700 font-medium leading-relaxed">
 								{result.meaning}
 							</p>
 						</div>
 						<div className="bg-slate-50 p-4 rounded-xl border border-slate-100 italic">
-							<label className="text-[10px] min-[431px]:text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">
+							<label className="text-[10px] min-[769px]:text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">
 								활용 문장
 							</label>
-							<p className="text-slate-600 leading-relaxed text-base min-[431px]:text-lg">
+							<p className="text-slate-600 leading-relaxed text-base min-[769px]:text-lg">
 								"{result.example}"
 							</p>
 						</div>
 
 						{sources.length > 0 && (
 							<div className="pt-4 border-t border-slate-100">
-								<label className="text-[10px] min-[431px]:text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
+								<label className="text-[10px] min-[769px]:text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
 									출처
 								</label>
 								<div className="flex flex-wrap gap-2">
@@ -151,7 +151,7 @@ const SearchLookup: React.FC<SearchLookupProps> = ({ onAddWord, language }) => {
 													href={source.web.uri}
 													target="_blank"
 													rel="noopener noreferrer"
-													className="text-[10px] min-[431px]:text-xs text-indigo-500 hover:text-indigo-700 bg-indigo-50 px-2 py-1 rounded hover:bg-indigo-100 transition-colors underline truncate max-w-[150px] min-[431px]:max-w-[200px]"
+													className="text-[10px] min-[769px]:text-xs text-indigo-500 hover:text-indigo-700 bg-indigo-50 px-2 py-1 rounded hover:bg-indigo-100 transition-colors underline truncate max-w-[150px] min-[769px]:max-w-[200px]"
 												>
 													{source.web.title || source.web.uri}
 												</a>
@@ -163,7 +163,7 @@ const SearchLookup: React.FC<SearchLookupProps> = ({ onAddWord, language }) => {
 
 						<button
 							onClick={handleAdd}
-							className="w-full py-3 min-[431px]:py-4 bg-emerald-500 text-white rounded-xl font-bold text-base min-[431px]:text-lg hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-100"
+							className="w-full py-3 min-[769px]:py-4 bg-emerald-500 text-white rounded-xl font-bold text-base min-[769px]:text-lg hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-100"
 						>
 							단어장에 추가하기
 						</button>

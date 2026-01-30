@@ -429,7 +429,7 @@ const App: React.FC = () => {
 			)}
 
 			{/* Sidebar - 1024px+ Side, <1024px Top */}
-			<aside className="w-full md:w-72 bg-white border-r border-slate-200 flex flex-col md:h-screen sticky top-0 z-30 shadow-xl shadow-slate-200/50">
+			<aside className="w-full md:w-72 bg-white border-r border-slate-200 flex flex-col h-auto md:h-screen sticky top-0 z-30 shadow-xl shadow-slate-200/50">
 				<div className="p-6 border-b border-slate-100 flex items-center space-x-3">
 					<div className="w-10 h-10 bg-indigo-600 rounded-2xl flex items-center justify-center text-white font-black shadow-lg shadow-indigo-200 text-xl">
 						W
@@ -537,7 +537,7 @@ const App: React.FC = () => {
 			</aside>
 
 			{/* Main Area */}
-			<div className="flex-1 flex flex-col h-screen overflow-y-auto">
+			<div className="flex-1 flex flex-col  h-auto lg:h-screen lg:overflow-y-auto">
 				<Header />
 
 				<main className="max-w-6xl w-full mx-auto px-4 py-10">

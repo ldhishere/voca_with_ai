@@ -40,7 +40,7 @@ const WordItem: React.FC<WordItemProps> = ({ word, visibility, onToggleFavorite,
 			return (
 				<span className="inline-flex items-baseline flex-wrap">
 					<span className="font-bold min-[769px]:font-black">{main}</span>
-					<span className="text-[0.65rem] font-medium text-slate-400 ml-1.5 tracking-tight uppercase">
+					<span className="text-[0.65rem] font-medium text-slate-400 ml-1.5 tracking-tight">
 						{sub}
 					</span>
 				</span>
